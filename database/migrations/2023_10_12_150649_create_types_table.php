@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('projects', function (Blueprint $table) {
-            //
-            $table->timestamp('published_at')->nullable()->after("is_published");	
+        Schema::create('types', function (Blueprint $table) {
+            $table->id();
+
+            $table->string("name");
+            $table->string("color")->nullable();
+
+            $table->timestamps();
         });
     }
 
@@ -22,8 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('projects', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('types');
     }
 };
