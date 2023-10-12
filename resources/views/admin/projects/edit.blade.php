@@ -50,7 +50,7 @@
                         <img src="{{ asset('/storage/' . $project->image) }}" alt="" class="img-thumbnail" style="width: 300px">
                         @endif
                 
-                        <div class="input-group">
+                        <div class="input-group my-3">
                             <label class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">
                                 <input type="file" class="form-control d-none" name="image" accept="image/*">
                                 Upload

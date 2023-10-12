@@ -3,26 +3,29 @@
 
 {{-- In questa pagina verranno visualizzati i dettagli del project selezionato --}}
 <div class="container">
+  <div class="text-center my-3">
+    <a href=" {{ route('admin.projects.index') }}" class="btn btn-primary">Back to Projects</a>
+  </div>
   <div class="row justify-content-center">
-    <div class="col-12">
-      <div class="card mt-5">
+    <div class="col-12 p-3">
+      <div class="card mt-3">
         <div class="card-header">
           <div class="d-flex justify-content-between">
-            <h2 class="fs-4 text-lg my-4">
+            <h2 class="ms-3 fs-3 text-lg my-4">
               {{ $project->title }}
             </h2>
-            <a class="nav-link d-flex align-items-center text-primary" href="{{ Route("admin.projects.edit", $project->slug)}}">Modify</a>
+            <a class="nav-link d-flex align-items-center text-primary me-5" href="{{ Route("admin.projects.edit", $project->slug)}}">Modify</a>
           </div>
           <div class="d-flex pt-2">
             <div class="row">
-              <div class="col-12 col-md-4 text-center">
+              <div class="col-12 col-md-4 text-center mb-3">
                 <img class="w-100 object-fit-cover" src="{{ asset('/storage/' . $project->image) }}" alt="{{ $project->title }}">
               </div>
               <div class="col-12 col-md-8 mt-5 mt-md-0 d-flex flex-column">
                 <p class="text-break">{{$project->description}}</p>
                 <small>Publishing Date: {{ $project->published_at?->format("d/m/Y") }}</small>
                 <div class="mt-auto">
-                  <div class="d-flex">
+                  <div class="d-flex mb-3">
                     <div class="col-3 me-2">GitHub:</div>
                     <div>{{$project->link}}</div>
                   </div>
@@ -52,10 +55,6 @@
           <div class="mb-3">
               <label for="commentEmail" class="form-label">Your Email</label>
               <input type="email" class="form-control" id="commentEmail">
-          </div>
-          <div class="mb-3">
-              <label for="commentWebsite" class="form-label">Your Website</label>
-              <input type="url" class="form-control" id="commentWebsite">
           </div>
           <button type="submit" class="btn btn-primary">Post Comment</button>
       </form>
