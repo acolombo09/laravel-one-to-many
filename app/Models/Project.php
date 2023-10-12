@@ -18,5 +18,11 @@ class Project extends Model {
         'image',
         'slug',
         'link',
+        'type_id',
     ];
+
+    // definisco la relazione con type
+    public function type() {
+        return $this->belongsTo(Type::class);
+    }
 }
