@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectUpsertRequest;
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -23,7 +24,10 @@ class ProjectController extends Controller {
 
     // CREATE
     public function create(): View {
-        return view("admin.projects.create");
+
+        $types = Type::all();
+
+        return view("admin.projects.create", compact("types"));
     }
 
     // STORE
@@ -54,11 +58,12 @@ class ProjectController extends Controller {
     }
 
     // EDIT
-    public function edit(string $slug): View
-    {
-        $project = Project::where("slug", $slug)->firstOrFail();
+    public function edit(string $slug): View  {
 
-        return view("admin.projects.edit", compact("project"));
+        $project = Project::where("slug", $slug)->firstOrFail();
+        $types = Type::all();
+
+        return view("admin.projects.edit", compact("project", "types"));
     }
 
     // UPDATE

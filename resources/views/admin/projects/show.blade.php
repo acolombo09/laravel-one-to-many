@@ -22,8 +22,21 @@
                 <img class="w-100 object-fit-cover" src="{{ asset('/storage/' . $project->image) }}" alt="{{ $project->title }}">
               </div>
               <div class="col-12 col-md-8 mt-5 mt-md-0 d-flex flex-column">
-                <p class="text-break">{{$project->description}}</p>
-                <small>Publishing Date: {{ $project->published_at?->format("d/m/Y") }}</small>
+                <div class="d-flex">
+                  <div class="col-3 me-2">Description: </div>
+                  <p class="text-break">{{$project->description}}</p>
+                </div>
+                <div class="d-flex">
+                  <div class="col-3 me-2">Type:</div>
+                  {{-- questo funziona perchè nei model ho specificato le relazioni! fa un join implicito --}}
+                  <p class="badge" style="background-color: rgb({{ $project->type->color }})"> 
+                    {{ $project->type->name }}
+                  </p>
+                </div>
+                <div class="d-flex">
+                  <div class="col-3 me-2">Publishing Date: </div>
+                  <p>{{ $project->published_at?->format("d/m/Y") }}</p>
+                </div>
                 <div class="mt-auto">
                   <div class="d-flex mb-3">
                     <div class="col-3 me-2">GitHub:</div>

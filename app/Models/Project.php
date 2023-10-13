@@ -18,6 +18,7 @@ class Project extends Model {
         'image',
         'slug',
         'link',
+        // così quando passo il project create, prende anche il type_id
         'type_id',
     ];
 

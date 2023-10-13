@@ -32,7 +32,11 @@ class ProjectUpsertRequest extends FormRequest
             "image" => "nullable|image|max:6000",
             "image_link" => "nullable|max:255",
             "link" => "required|string",
-            "is_published" => "nullable|boolean"
+            "is_published" => "nullable|boolean",
+            // tip in classe, exists si assicura che l'id passato esista
+            // nella tabella indicata
+            // best practice nei validatori
+            "type_id" => "nullable|exists:types,id"
         ];
     }
 }

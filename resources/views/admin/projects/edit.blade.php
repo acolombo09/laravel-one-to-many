@@ -43,6 +43,21 @@
                         </div>
                     </div>
 
+                    {{-- types --}}
+                    <div class="row mb-3">
+                        <label class="col-3 col-form-label">Type</label>
+                        <div class="col-sm-9">
+                        <select class="form-select" aria-label="Default select example" name="type_id">
+                            @foreach ($types as $type)
+                            <option value="{{$type->id}}" {{ $project->type_id == $type->id ? 'selected' : ''}} >{{$type->name}}</option>
+                            @endforeach
+                        </select>
+                        @error('type_id')
+                        <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
+                        </div>
+                    </div>
+
                     {{-- image (solo url) --}}
                     <div class="mb-3">
                         <label class="form-label">Image</label>

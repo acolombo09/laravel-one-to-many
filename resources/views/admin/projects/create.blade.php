@@ -6,6 +6,7 @@
 
                 <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf()
+                    
                     {{-- title --}}
                     <div class="mb-3">
                         <label class="form-label">Title</label>
@@ -17,6 +18,10 @@
                             @enderror
                         </div>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Publishing Date</label>
+                        <input type="date" class="form-control" name="published_at" value="{{ now()->toDateString() }}">
+                    </div>
 
                     {{-- description --}}
                     <div class="mb-3">
@@ -27,6 +32,21 @@
                             @error('description')
                             <div class="invalid-feedback">{{$message}}</div>
                             @enderror
+                        </div>
+                    </div>
+                    
+                    {{-- types --}}
+                    <div class="row mb-3">
+                        <label class="col-3 col-form-label">Type</label>
+                        <div class="col-sm-9">
+                        <select class="form-select" aria-label="Default select example" name="type_id">
+                            @foreach ($types as $type)
+                            <option value="{{$type->id}}">{{$type->name}}</option>
+                            @endforeach
+                        </select>
+                        @error('type_id')
+                        <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
                         </div>
                     </div>
 

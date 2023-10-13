@@ -12,6 +12,10 @@
         <div class="card-body">
           <h5 class="card-title text-center"><a class="text-decoration-none" href="{{route("admin.projects.show", $project->slug)}}">{{$project->title}}</a></h5>
           <p class="card-text">{{ $project->description }}</p>
+          {{-- questo funziona perchè nei model ho specificato le relazioni! fa un join implicito --}}
+          <p class="badge" style="background-color: rgb({{ $project->type->color }})"> 
+            {{ $project->type->name }}
+          </p>
           <p class="card-text">{{ $project->published_at?->format("d/m/Y") }}</p>
         </div>
       </div>
